@@ -37,14 +37,14 @@ export default function TopDownAnalysis() {
     text: "",
   });
 
-  const dailyTrend = daily.trend;
-  const dailySmtOrLesPattern = daily.les || daily.smt;
-  const dailyOTE = daily.ote;
+  const dailyTrend = daily?.trend;
+  const dailySmtOrLesPattern = daily?.les || daily?.smt;
+  const dailyOTE = daily?.ote;
 
-  const hourlyTrend = hourly.trend;
-  const hourlySmtOrLesPattern = hourly.les || hourly.smt;
-  const hourlyOTE = hourly.ote;
-  const hourlyTradingRange = hourly.range;
+  const hourlyTrend = hourly?.trend;
+  const hourlySmtOrLesPattern = hourly?.les || hourly?.smt;
+  const hourlyOTE = hourly?.ote;
+  const hourlyTradingRange = hourly?.range;
 
   useEffect(() => {
     const analysis = JSON.parse(localStorage.getItem("analysis") as string);
@@ -118,16 +118,16 @@ export default function TopDownAnalysis() {
             <div className="flex">
               <div className="flex-1/2">
                 <ToggleSwitch
-                  checked={weekly.trend}
+                  checked={weekly?.trend}
                   onChange={(value) => handleWeekly(value, "trend")}
-                  label={weekly.trend ? "up" : "down"}
+                  label={weekly?.trend ? "up" : "down"}
                 />
               </div>
               <div className="flex-1/2">
                 <ToggleSwitch
-                  checked={weekly.ote}
+                  checked={weekly?.ote}
                   onChange={(value) => handleWeekly(value, "ote")}
-                  label={weekly.ote ? "OB" : "OS"}
+                  label={weekly?.ote ? "OB" : "OS"}
                 />
               </div>
             </div>
@@ -139,32 +139,32 @@ export default function TopDownAnalysis() {
             <div className="flex ">
               <div className="flex-1/2">
                 <ToggleSwitch
-                  checked={daily.trend}
+                  checked={daily?.trend}
                   onChange={(value) => handleDaily(value, "trend")}
-                  label={daily.trend ? "up" : "down"}
+                  label={daily?.trend ? "up" : "down"}
                 />
               </div>
               <div className="flex-1/2">
                 <ToggleSwitch
-                  checked={daily.ote}
+                  checked={daily?.ote}
                   onChange={(value) => handleDaily(value, "ote")}
-                  label={daily.ote ? "OB" : "OS"}
+                  label={daily?.ote ? "OB" : "OS"}
                 />
               </div>
             </div>
             <div className="flex ">
               <div className="flex-1/2">
                 <ToggleSwitch
-                  checked={daily.smt}
+                  checked={daily?.smt}
                   onChange={(value) => handleDaily(value, "smt")}
-                  label={daily.smt ? "SMT-Y" : "SMT-N"}
+                  label={daily?.smt ? "SMT-Y" : "SMT-N"}
                 />
               </div>
               <div className="flex-1/2">
                 <ToggleSwitch
-                  checked={daily.les}
+                  checked={daily?.les}
                   onChange={(value) => handleDaily(value, "les")}
-                  label={daily.les ? "LES-Y" : "LES-N"}
+                  label={daily?.les ? "LES-Y" : "LES-N"}
                 />
               </div>
             </div>
@@ -177,40 +177,40 @@ export default function TopDownAnalysis() {
               <div className="flex flex-1/2 items-center">
                 <ToggleSwitch
                   className="flex-2/3"
-                  checked={hourly.trend}
+                  checked={hourly?.trend}
                   onChange={(value) => handleHourly(value, "trend")}
-                  label={hourly.range ? "RNG" : hourly.trend ? "up" : "down"}
-                  disabled={hourly.range}
-                  color={hourly.range ? "gray" : "blue"}
+                  label={hourly?.range ? "RNG" : hourly?.trend ? "up" : "down"}
+                  disabled={hourly?.range}
+                  color={hourly?.range ? "gray" : "blue"}
                 />
                 <div className="flex-1/3 items-center flex">
                   <Checkbox
-                    checked={hourly.range}
-                    onChange={() => handleHourly(!hourly.range, "range")}
+                    checked={hourly?.range}
+                    onChange={() => handleHourly(!hourly?.range, "range")}
                   />
                 </div>
               </div>
               <div className="flex-1/2">
                 <ToggleSwitch
-                  checked={hourly.ote}
+                  checked={hourly?.ote}
                   onChange={(value) => handleHourly(value, "ote")}
-                  label={hourly.ote ? "OB" : "OS"}
+                  label={hourly?.ote ? "OB" : "OS"}
                 />
               </div>
             </div>
             <div className="flex ">
               <div className="flex-1/2">
                 <ToggleSwitch
-                  checked={hourly.smt}
+                  checked={hourly?.smt}
                   onChange={(value) => handleHourly(value, "smt")}
-                  label={hourly.smt ? "SMT-Y" : "SMT-N"}
+                  label={hourly?.smt ? "SMT-Y" : "SMT-N"}
                 />
               </div>
               <div className="flex-1/2">
                 <ToggleSwitch
-                  checked={hourly.les}
+                  checked={hourly?.les}
                   onChange={(value) => handleHourly(value, "les")}
-                  label={hourly.les ? "LES-Y" : "LES-N"}
+                  label={hourly?.les ? "LES-Y" : "LES-N"}
                 />
               </div>
             </div>
@@ -252,7 +252,7 @@ export default function TopDownAnalysis() {
                   </th>
                   <td className="px-6 py-4">
                     <Image
-                      src={weekly.trend ? increase : decrease}
+                      src={weekly?.trend ? increase : decrease}
                       alt="trend"
                       width={25}
                       height={25}
@@ -271,7 +271,7 @@ export default function TopDownAnalysis() {
                       src={
                         hourlyTrend
                           ? increase
-                          : hourly.trend
+                          : hourly?.trend
                             ? increase
                             : decrease
                       }
