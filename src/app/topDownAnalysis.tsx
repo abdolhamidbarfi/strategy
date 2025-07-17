@@ -48,10 +48,10 @@ export default function TopDownAnalysis() {
 
   useEffect(() => {
     const analysis = JSON.parse(localStorage.getItem("analysis") as string);
-    setFund(() => analysis.fund);
-    setWeekly(() => analysis.weekly);
-    setDaily(() => analysis.daily);
-    setHourly(() => analysis.hourly);
+    setFund(() => analysis?.fund);
+    setWeekly(() => analysis?.weekly);
+    setDaily(() => analysis?.daily);
+    setHourly(() => analysis?.hourly);
   }, []);
 
   function handleWeekly(value: boolean, key: string) {
